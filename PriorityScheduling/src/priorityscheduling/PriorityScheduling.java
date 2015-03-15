@@ -38,9 +38,9 @@ public class PriorityScheduling {
                 priorities.add(scanner.nextInt());
                 arrivalTimes.add(scanner.nextInt());
                 executionTimes.add(scanner.nextInt());
-                System.out.print("Priority:" + priorities.get(priorities.size()-1));
-                System.out.print(" Arrival:" + arrivalTimes.get(priorities.size()-1));
-                System.out.println(" Execution Time:" + executionTimes.get(priorities.size()-1));
+//                System.out.print("Priority:" + priorities.get(priorities.size()-1));
+//                System.out.print(" Arrival:" + arrivalTimes.get(priorities.size()-1));
+//                System.out.println(" Execution Time:" + executionTimes.get(priorities.size()-1));
             }
         } catch (FileNotFoundException ex) {
             System.out.println("\"input.txt\" not found");
@@ -55,6 +55,7 @@ public class PriorityScheduling {
         
         //create one task for each row that has been read
         for (int i = 0; i < priorities.size(); i++) {
+            //technically , the id of every task , is the row number
             MyTask t = new MyTask(i, priorities.get(i), arrivalTimes.get(i), executionTimes.get(i), s);
             tasks[i] = t;
             //and start the task immediately
