@@ -4,16 +4,16 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Objects of this class represent a single task
  * @author Nikos Stampoulis
  */
 public class MyTask extends Thread {
 
-    private int priority;   //priority
-    private int pid;    //proccess id
-    private int arrivalTime;    //arrival time of proccess after start of the programm (seconds)
-    private Semaphore s; //the common semaphore object among the tasks
-    private int executionTime;  // time using the resource (seconds)
+    private final int priority;   //priority
+    private final int pid;    //proccess id
+    private final int arrivalTime;    //arrival time of proccess after start of the programm (seconds)
+    private final Semaphore s; //the common semaphore object among the tasks
+    private final int executionTime;  // time using the resource (seconds)
 
     MyTask(int pid, int priority, int arrivalTime, int executionTime, Semaphore s) {
         this.priority = priority;
@@ -38,6 +38,12 @@ public class MyTask extends Thread {
         return arrivalTime;
     }
 
+    /**
+     * Simulate the use of the resource from the current task .
+     * It does not do a thing , it just throws the task to sleep for as many seconds as the execution 
+     * time variable
+     * @throws InterruptedException
+     */
     public void simulateExecution() throws InterruptedException {
         sleep(1000 * executionTime);
     }
@@ -45,7 +51,7 @@ public class MyTask extends Thread {
     @Override
     public void run() {
         try {
-            this.sleep(1000 * arrivalTime);
+            Thread.sleep(1000 * arrivalTime);
         } catch (InterruptedException ex) {
             Logger.getLogger(MyTask.class.getName()).log(Level.SEVERE, null, ex);
         }

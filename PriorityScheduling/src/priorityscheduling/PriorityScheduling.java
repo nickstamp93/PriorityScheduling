@@ -8,7 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * The main class
  * @author Nikos Stampoulis
  */
 public class PriorityScheduling {
@@ -17,7 +17,9 @@ public class PriorityScheduling {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        //the command lines are not used ,instead the programm requires an "input.txt" file
+        //in the same directory in order to work
+        
         //the input file
         File file = new File("input.txt");
 
@@ -38,16 +40,13 @@ public class PriorityScheduling {
                 priorities.add(scanner.nextInt());
                 arrivalTimes.add(scanner.nextInt());
                 executionTimes.add(scanner.nextInt());
-//                System.out.print("Priority:" + priorities.get(priorities.size()-1));
-//                System.out.print(" Arrival:" + arrivalTimes.get(priorities.size()-1));
-//                System.out.println(" Execution Time:" + executionTimes.get(priorities.size()-1));
             }
         } catch (FileNotFoundException ex) {
             System.out.println("\"input.txt\" not found");
             Logger.getLogger(PriorityScheduling.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        
+        //init tasks array
         tasks = new MyTask[priorities.size()];
         
         //create the semaphore object

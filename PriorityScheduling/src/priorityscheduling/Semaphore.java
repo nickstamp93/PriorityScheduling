@@ -16,6 +16,7 @@ public class Semaphore {
     //array with tasks that are in sleep mode
     private static MyTask[] sleepTasks;
 
+    //The task object that is currently using the resource
     MyTask handler;
 
     Semaphore(int numThreads) {
@@ -29,6 +30,10 @@ public class Semaphore {
         sleepTasks = new MyTask[numThreads];
     }
 
+    /**
+     * A method that a task calls in order to request use of the resource
+     * @param task the MyTask object that requests to use the resource
+     */
     public void requestResource(MyTask task) {
         //if task did not get the permission to use the resource , suspend it
         if (!acquire(task)) {
@@ -49,6 +54,11 @@ public class Semaphore {
         task.stop();
     }
 
+    /**
+     * This method is called by a task in order to acquire the resource
+     * @param task the MyTask object
+     * @return true if the task got control of the resource else false
+     */
     public synchronized boolean acquire(MyTask task) {
         //if resource is currently busy
         if (isBusy) {
@@ -66,6 +76,12 @@ public class Semaphore {
         }
     }
 
+    /**
+     * This method is called by a task which has already control of the resource
+     * and the method releases the resource from it . If there are other tasks waiting
+     * it gives the control to the task with the highest priority .
+     * @param task MyTask object
+     */
     public synchronized void release(MyTask task) {
         System.out.println("Process with Pid :" + task.getID() + " just entered RELEASE");
 
