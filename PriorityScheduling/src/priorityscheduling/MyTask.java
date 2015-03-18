@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 
 /**
  * Objects of this class represent a single task
+ *
  * @author Nikos Stampoulis
  */
 public class MyTask extends Thread {
@@ -39,9 +40,10 @@ public class MyTask extends Thread {
     }
 
     /**
-     * Simulate the use of the resource from the current task .
-     * It does not do a thing , it just throws the task to sleep for as many seconds as the execution 
-     * time variable
+     * Simulate the use of the resource from the current task . It does not do a
+     * thing , it just throws the task to sleep for as many seconds as the
+     * execution time variable
+     *
      * @throws InterruptedException
      */
     public void simulateExecution() throws InterruptedException {
@@ -55,7 +57,7 @@ public class MyTask extends Thread {
         } catch (InterruptedException ex) {
             Logger.getLogger(MyTask.class.getName()).log(Level.SEVERE, null, ex);
         }
-        System.out.println("Pid :" + pid + ", just woke up.");
+        System.out.println("Proccess " + pid + " just arrived (time = " + arrivalTime + ")");
         s.requestResource(this);
     }
 

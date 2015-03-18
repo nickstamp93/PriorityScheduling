@@ -41,6 +41,7 @@ public class PriorityScheduling {
                 arrivalTimes.add(scanner.nextInt());
                 executionTimes.add(scanner.nextInt());
             }
+            System.out.println("Input file reading finished!");
         } catch (FileNotFoundException ex) {
             System.out.println("\"input.txt\" not found");
             Logger.getLogger(PriorityScheduling.class.getName()).log(Level.SEVERE, null, ex);
@@ -60,6 +61,7 @@ public class PriorityScheduling {
             //and start the task immediately
             t.start();
         }
+        System.out.println("Simulation started");
 
     }
 
